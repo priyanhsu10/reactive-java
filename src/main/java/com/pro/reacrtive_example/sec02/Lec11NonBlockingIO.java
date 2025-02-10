@@ -1,5 +1,6 @@
 package com.pro.reacrtive_example.sec02;
 
+import com.pro.reacrtive_example.common.ExternalServiceClient;
 import com.pro.reacrtive_example.common.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

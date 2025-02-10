@@ -1,6 +1,7 @@
-package com.pro.reacrtive_example.sec02;
+package com.pro.reacrtive_example.common;
 
 import com.pro.reacrtive_example.common.AbstractHttpClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class ExternalServiceClient extends AbstractHttpClient {
@@ -11,6 +12,12 @@ public class ExternalServiceClient extends AbstractHttpClient {
                 .responseContent()
                 .asString()
                 .next();
+    }
+    public Flux<String>  getProducts(){
+
+        return  this.httpClient.get().uri("/demo02/name/stream")
+                .responseContent()
+                .asString();
     }
 
 

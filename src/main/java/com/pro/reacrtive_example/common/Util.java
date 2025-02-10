@@ -1,5 +1,6 @@
 package com.pro.reacrtive_example.common;
 
+import com.github.javafaker.Faker;
 import org.reactivestreams.Subscriber;
 import reactor.core.publisher.Mono;
 
@@ -15,6 +16,7 @@ public class Util {
 
     }
 
+    public static Faker faker = new Faker();
     public static void main(String[] args) {
         var mono= Mono.just(1);
         mono.subscribe(subscriber("test"));
