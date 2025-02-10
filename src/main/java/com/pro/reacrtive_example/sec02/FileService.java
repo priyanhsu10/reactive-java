@@ -4,11 +4,8 @@ import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class FileService implements IFileService{
     private String FileBasepath ="/Users/priyanshuparate/practice/reacrtive-example/src/test/java/com/pro/reacrtive_example/sec02";
@@ -17,13 +14,13 @@ public class FileService implements IFileService{
 
         return  Mono.fromSupplier(()->{
             Path path = Paths.get(FileBasepath+"/"+ fileName);
-            List<String> strings = null;
+            String strings = null;
             try {
-                strings = Files.readAllLines(path);
+                strings = Files.readString(path);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return  strings.stream().collect(Collectors.joining("\n"));
+            return  strings;
 
         });
     }
