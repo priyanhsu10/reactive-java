@@ -1,9 +1,9 @@
-package com.pro.reacrtive_example.sec04;
+package com.pro.reacrtive_example.sec04.assignments;
 
 import com.pro.reacrtive_example.common.Util;
 import reactor.core.publisher.Flux;
 
-public class Assingment {
+public class Assingment01 {
     public static void main(String[] args) {
 
         Flux.<String>generate(synchronousSink -> {

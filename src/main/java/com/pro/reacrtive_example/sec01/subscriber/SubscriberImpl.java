@@ -15,6 +15,7 @@ public class SubscriberImpl implements Subscriber<String> {
     public void onSubscribe(Subscription subscription) {
         this.subscription=subscription;
 
+
     }
 
     @Override
