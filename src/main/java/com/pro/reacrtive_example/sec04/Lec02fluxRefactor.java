@@ -7,11 +7,12 @@ import reactor.core.publisher.Flux;
 public class Lec02fluxRefactor {
     public static void main(String[] args) {
 
-        NameGenerator generator= new NameGenerator();
-        Flux.create(generator)
-                .subscribe(Util.subscriber());
+        NameGenerator generator = new NameGenerator();
+        var flux = Flux.create(generator);
+        flux.subscribe(Util.subscriber("sub1"));
+        flux.subscribe(Util.subscriber("sub2"));
 
-        Flux.range(1,10)
-                .subscribe(x-> generator.generate());
+        Flux.range(1, 2)
+                .subscribe(x -> generator.generate());
     }
 }
