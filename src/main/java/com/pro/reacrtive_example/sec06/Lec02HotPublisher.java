@@ -9,7 +9,7 @@ import java.time.Duration;
 public class Lec02HotPublisher {
     public static void main(String[] args) {
 
-        var movieFlux = moviewStream()
+        var movieFlux = movieStream()
                 .publish()
                 .refCount(1);
         Util.sleepSeconds(2);
@@ -32,9 +32,9 @@ public class Lec02HotPublisher {
         Util.sleepSeconds(15);
     }
 
-    private static Flux<String> moviewStream() {
+    private static Flux<String> movieStream() {
         return Flux.generate(() -> {
-                            System.out.println("reviced the requst");
+                            System.out.println("received the request");
                             return 1;
                         },
 

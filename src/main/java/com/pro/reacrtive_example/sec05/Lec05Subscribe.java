@@ -8,7 +8,7 @@ public class Lec05Subscribe {
         Flux.range(1,10)
                 .doOnNext((x)-> System.out.println(x*2))
                 .doOnError(err-> System.out.println(err))
-                .doOnComplete(()-> System.out.println("comppleted"))
+                .doOnComplete(()-> System.out.println("completed"))
                 .subscribe();
     }
 }

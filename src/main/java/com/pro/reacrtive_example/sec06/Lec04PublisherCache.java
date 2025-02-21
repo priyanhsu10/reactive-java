@@ -10,13 +10,15 @@ import java.time.Duration;
 public class Lec04PublisherCache {
     private static Logger logger = LoggerFactory.getLogger(Lec04PublisherCache.class);
     public static void main(String[] args) {
-    var stockFlux=stockStream().replay(1).autoConnect(0);
+    var stockFlux=stockStream()
+            .replay(1)
+            .autoConnect(0);
 
      Util.sleepSeconds(4);
-     logger.info("sam joiing");
+     logger.info("sam joining");
      stockFlux.subscribe(Util.subscriber("sam"));
      Util.sleepSeconds(4);
-     logger.info("mike joinig");
+     logger.info("mike joining");
      stockFlux.subscribe(Util.subscriber("mike"));
      Util.sleepSeconds(15);
 
@@ -25,10 +27,10 @@ public class Lec04PublisherCache {
     private  static Flux<Integer> stockStream(){
 
         return  Flux
-                .generate(sink->sink.next(Util.faker.random().nextInt(10,100)))
+                .<Integer>generate(sink->sink.next(Util.faker.random().nextInt(10,100)))
                 .delayElements(Duration.ofSeconds(1))
-                .doOnNext(x->logger.info("emititing price: {}",x))
-                .cast(Integer.class);
+                .doOnNext(x->logger.info("emmiting price: {}",x));
+
 
     }
 }

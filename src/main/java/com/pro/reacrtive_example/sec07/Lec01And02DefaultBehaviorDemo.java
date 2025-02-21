@@ -23,10 +23,10 @@ public class Lec01And02DefaultBehaviorDemo {
                 .subscribeOn(Schedulers.boundedElastic())
                 .doFirst(() -> log.info("dofirst 2"));
 
-       Runnable runnable=()-> flux.subscribe(Util.subscriber("sub1"));
-        Runnable runnable2=()-> flux.subscribe(Util.subscriber("sub2"));
+        Runnable runnable = () -> flux.subscribe(Util.subscriber("sub1"));
+        Runnable runnable2 = () -> flux.subscribe(Util.subscriber("sub2"));
 
-       new Thread(runnable).start();
+        new Thread(runnable).start();
         new Thread(runnable2).start();
         Util.sleepSeconds(2);
     }
