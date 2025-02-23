@@ -3,7 +3,6 @@ package com.pro.reacrtive_example.sec08.assignment;
 import com.pro.reacrtive_example.common.AbstractHttpClient;
 import reactor.core.publisher.Mono;
 
-record  Product(String name,String price,String review){}
 public class ProductHttpClient extends AbstractHttpClient {
 private static final String baseUrl="http://localhost:7070";
     public   Mono<Product> getProduct(int id){
