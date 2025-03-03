@@ -24,7 +24,6 @@ public class GroupByAssignment {
        getOrderStream()
                .filter(canProcess())
                .groupBy(PerchaseRecord::category)
-
                .flatMap(x->x.transform(getProcessor(x.key())))
                .subscribe(Util.subscriber());
       Util.sleepSeconds(60);
@@ -54,7 +53,7 @@ public class GroupByAssignment {
                 .then();
     }
     public  static Flux<PerchaseRecord> getOrderStream(){
-        return  Flux.interval(Duration.ofMillis(500))
+        return  Flux.interval(Duration.ofMillis(100))
                 .map(x->new PerchaseRecord(Util.faker.commerce().productName(),Util.faker.commerce().department(), Util.faker.random().nextInt(100,1200)));
 
     }
