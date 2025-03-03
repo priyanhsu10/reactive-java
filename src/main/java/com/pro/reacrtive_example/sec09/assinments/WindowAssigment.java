@@ -3,6 +3,7 @@ package com.pro.reacrtive_example.sec09.assinments;
 import com.pro.reacrtive_example.common.Util;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class WindowAssigment {
     public static void main(String[] args) {
         logStream().window(Duration.ofSeconds(2))
+                .publishOn(Schedulers.boundedElastic())
                 .flatMap(FileWriter::writeFile)
                 .subscribe();
         Util.sleepSeconds(10);
@@ -42,7 +44,7 @@ class  FileWriter{
     private void write(String content){
 
         try {
-            writer.write(content);
+            writer.write("therad : "+Thread.currentThread().getName()+"["+LocalDateTime.now()+"]" +content);
             writer.write('\n');
         } catch (IOException e) {
             throw new RuntimeException(e);
