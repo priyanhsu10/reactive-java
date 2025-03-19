@@ -1,8 +1,8 @@
 package com.pro.reacrtive_example.sec10;
 
-public class ClientError extends RuntimeException {
-    public ClientError(){
-        super("bad request ");
+public class ServerError extends RuntimeException {
+    public ServerError(){
+        super("Server Error ");
     }
 }
 
